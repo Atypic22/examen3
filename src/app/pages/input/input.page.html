@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Regresar" color="primary" mode="ios"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Input</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <form>
+      <ion-item>
+        <ion-input label="Nombre" placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
+
+      <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+        <ion-list-header>
+          <ion-label>Formulario válido: {{ formulario.valid }}</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Password:</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="usuario.password" required placeholder="Contraseña">
+          </ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Email:</ion-label>
+          <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="usuario.email"
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zAZ]{2,5})$" required></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input label="Numero telefonico" type="tel" placeholder="Ingrese su numero telefonico"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input Label="Fecha de cumpleaños" type="date" placeholder="Ingrese fecha"></ion-input>
+        </ion-item>
+
+        <ion-button [disabled]="formulario.invalid" type="submit" expand="block">
+          Login
+        </ion-button>
+      </form>
+   
+
